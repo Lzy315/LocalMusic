@@ -1,5 +1,5 @@
 package com.example.localmusic;
-
+/*JavaBean:必须具有无参数的构造器，所有的属性都是private的，通过提供setter和getter方法来实现对成员属性的访问。*/
 public class LocalMusicBean {
     private String id;
     private String song;

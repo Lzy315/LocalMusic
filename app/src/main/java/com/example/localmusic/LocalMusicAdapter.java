@@ -32,12 +32,14 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Lo
 
     @NonNull
     @Override
+//    把View直接封装在ViewHolder中，负责每个Item的布局
     public LocalMusicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_local_music, parent, false);  //获取item_local_music布局，转换成View
         LocalMusicViewHolder holder = new LocalMusicViewHolder(view);
         return holder;
     }
 
+//    适配渲染数据到View中
     @Override
     public void onBindViewHolder(@NonNull LocalMusicViewHolder holder, int position) {
         /*从position中获取数据，并展示出来*/
