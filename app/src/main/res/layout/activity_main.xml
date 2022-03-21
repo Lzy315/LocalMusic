@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg2">
+
+    <RelativeLayout
+        android:id="@+id/local_music_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="#33EEEEEE">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#9933FA" />
+        //划线
+        <!---->
+        <ImageView
+            android:id="@+id/local_music_bottom_iv_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/a1"
+            android:src="@mipmap/icon_song" />
+        <!--        歌曲名称-->
+        <TextView
+            android:id="@+id/local_music_bottom_tv_song"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/local_music_bottom_iv_icon"
+            android:text=""
+            android:textSize="16sp" />
+        <!--歌手-->
+        <TextView
+            android:id="@+id/local_music_bottom_tv_singer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/local_music_bottom_tv_song"
+            android:layout_alignLeft="@id/local_music_bottom_tv_song"
+            android:layout_marginTop="10dp"
+            android:text=""
+            android:textSize="12sp" />
+        //layout_alignLeft根据兄弟组件来定位，与谁左对齐
+
+        <ImageView
+            android:id="@+id/local_music_bottom_iv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/icon_next" />
+        //layout_marginRight设置组件与兄弟组件的边距
+
+        <ImageView
+            android:id="@+id/local_music_bottom_iv_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/local_music_bottom_iv_next"
+            android:src="@mipmap/icon_play" /> //layout_toLeftOf在谁的左边
+
+        <ImageView
+            android:id="@+id/local_music_bottom_iv_last"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/local_music_bottom_iv_play"
+            android:src="@mipmap/icon_last" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/local_music_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/local_music_bottom_layout"></androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>
