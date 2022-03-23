@@ -108,7 +108,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setEventListener() {
         /*设置每一项的点击事件*/
-//        接口的匿名内部类
+
+//        接口回调，接口的匿名内部类
         adapter.setOnItemClickLister(new LocalMusicAdapter.OnItemClickLister() {
             @Override
             public void OnItemClick(View view, int position) {

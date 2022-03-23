@@ -20,7 +20,7 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Lo
     public void setOnItemClickLister(OnItemClickLister onItemClickLister) {
         this.onItemClickLister = onItemClickLister;
     }
-
+//接口回调
     public interface OnItemClickLister {
         public void OnItemClick(View view, int position);
     }
