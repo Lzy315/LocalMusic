@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         adapter = new LocalMusicAdapter(this, mDatas);
         musicRv.setAdapter(adapter);
         //设置布局管理器
+        /*布局管理器LayoutManager ,用于确定RecyclerView中Item的展示方式,布局管理器(LayoutManager)可显示列表(LinerLayoutManager)、
+        网格(GridLayoutManager)、瀑布流(StaggeredGridLayoutManager)等形式，*/
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         musicRv.setLayoutManager(layoutManager);
 
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void loadLocalMusicData() {
         int id = 0;
 //        加载本地音乐的MP3文件到集合中。
-//        1.获取ContentResolver
+//        1.获取内容解析器：ContentResolver
         ContentResolver resolver = getContentResolver();
 //        2.获取本地音乐存储的地址
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             id++;
             String sid = String.valueOf(id);
             String path = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
+//            持续时间，毫秒数，long类型
             long duration = cursor.getLong(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
             SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");  /*指定格式*/
             String time = sdf.format(new Date(duration));  /*Date(0L)当前的毫秒值转成日期对象,sdf.format将Date对象格式化为字符串*/
@@ -107,12 +110,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setEventListener() {
-        /*设置每一项的点击事件*/
+        /*设置每一个item的点击事件*/
 
-//        接口回调，接口的匿名内部类
+//        接口回调，接口的匿名内部类。
         adapter.setOnItemClickLister(new LocalMusicAdapter.OnItemClickLister() {
             @Override
             public void OnItemClick(View view, int position) {
+//                加载被点击的item
                 currentPlayPosition = position;
                 LocalMusicBean musicBean = mDatas.get(position);
                 playMusicMusicBean(musicBean);
@@ -197,12 +201,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         singerIv = findViewById(R.id.local_music_bottom_tv_singer);
         songTv = findViewById(R.id.local_music_bottom_tv_song);
         musicRv = findViewById(R.id.local_music_rv);
-//setOnClickListener() 方法为按钮注册一个监听器，点击按钮时就会执行监听器中的 onClick() 方法。
+//setOnClickListener() 方法为按钮注册一个监听器，点击按钮时就会执行View.OnClickListener中的 onClick() 方法。
         nextIv.setOnClickListener(this);
         lastIv.setOnClickListener(this);
         playIv.setOnClickListener(this);
     }
 
+//    实现  View.OnClickListener接口的onClick()方法
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.local_music_bottom_iv_last:

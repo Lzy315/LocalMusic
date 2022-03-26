@@ -10,7 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-
+/*
+* LocalMusicAdapter的泛型为ViewHolder对象，此处为LocalMusicViewHolder。
+* extends RecyclerView.Adapter需要重写 onCreateViewHolder(),onBindViewHolder() , getItemCount()*/
 public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.LocalMusicViewHolder> {
 
     Context context;
@@ -49,10 +51,11 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Lo
         holder.singerTv.setText(musicBean.getSinger());
         holder.albumTv.setText(musicBean.getAlbum());
         holder.timeTv.setText(musicBean.getDuration());
-
+//注册每一个item的点击事件，监听被点击的item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                传递被点击的item
                 onItemClickLister.OnItemClick(v,position);
             }
         });
@@ -66,7 +69,7 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Lo
     }
 
 
-    //必须有个类继承内部类 RecyclerView.ViewHolder
+    //ViewHolder对象必须继承RecyclerView的内部类 RecyclerView.ViewHolder
     class LocalMusicViewHolder extends RecyclerView.ViewHolder {
         TextView idTv, songTv, singerTv, albumTv, timeTv;
 
